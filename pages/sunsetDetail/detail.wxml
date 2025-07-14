@@ -1,0 +1,84 @@
+<view class="detail-container text-white" style="background: {{bgColor}};">
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y enhanced="{{true}}" show-scrollbar="{{false}}" enable-back-to-top="{{true}}" bounces="{{false}}" refresher-enabled="{{false}}">
+    <!-- 预测结果 -->
+    <view class="result-section" wx:if="{{predictData}}">
+      <!-- 模式切换器 -->
+      <view class="detail-cards">
+        <view class="model-switcher info-card slide-up">
+          <view class="card-header">
+            <view class="card-title">预测模式</view>
+          </view>
+          <view class="card-content">
+            <view class="switcher-buttons">
+              <view class="model-btn {{currentModel === item.key ? 'active' : ''}}" wx:for="{{models}}" wx:key="key" data-model="{{item.key}}" bindtap="switchModel">
+                <view class="model-name">{{item.name}}</view>
+                <view class="model-desc">{{item.desc}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 主要信息卡片 -->
+      <view class="main-card slide-up">
+        <view class="city-info">
+          <view class="city-name">{{predictData.display_city_name}}</view>
+        </view>
+
+        <view class="event-info">
+          <view class="event-name">{{predictData.display_event_name_cn}}</view>
+          <view class="event-time">{{predictData.tb_event_time}}</view>
+        </view>
+      </view>
+
+      <!-- 详细数据 -->
+      <view class="detail-cards">
+        <!-- 大气条件和预测质量 -->
+        <view class="info-card slide-up">
+          <view class="card-header">
+            <view class="card-title">大气条件与预测</view>
+          </view>
+          <view class="card-content">
+            <view class="data-item">
+              <view class="data-label">预测质量</view>
+              <view class="data-value">{{predictData.tb_quality}}</view>
+            </view>
+            <view class="data-item">
+              <view class="data-label">气溶胶光学厚度</view>
+              <view class="data-value">{{predictData.tb_aod}}</view>
+            </view>
+            <view class="data-item">
+              <view class="data-label">预测模式</view>
+              <view class="data-value">{{predictData.display_model}}</view>
+            </view>
+            <view class="data-item">
+              <view class="data-label">时次</view>
+              <view class="data-value">{{predictData.display_times_name}}</view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 建议 -->
+        <view class="advice-card slide-up">
+          <view class="card-header">
+            <view class="card-title">观测建议</view>
+          </view>
+          <view class="card-content">
+            <view class="advice-text">{{adviceText}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 错误状态 -->
+    <view class="error-section fade-in" wx:if="{{!loading && error}}">
+      <view class="error-card">
+        <view class="error-icon">😔</view>
+        <view class="error-text">{{error}}</view>
+        <button class="retry-btn" bindtap="retryPredict">重新预测</button>
+      </view>
+    </view>
+  </scroll-view>
+
+</view>

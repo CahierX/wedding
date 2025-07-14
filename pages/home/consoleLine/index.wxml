@@ -1,7 +1,0 @@
-<view class="terminal">
-  <text class="code green">console.log</text>
-  <text class="code yellow">(</text>
-  <text class="code pink">"2025年5月10号我们结婚啦!"</text>
-  <text class="code yellow">)</text>
-  <text class="cursor" wx:if="{{showCursor}}">_</text>
-</view>

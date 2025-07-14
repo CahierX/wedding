@@ -1,5 +1,0 @@
-<me-waterfall custom-class="water-fall" column="1">
-  <me-waterfall-item custom-class="water-fall-item" wx:for="{{list}}" wx:key="index">
-    <image class="image" src="{{item.image}}" mode="aspectFill" style="height:{{item.height}}px;margin-bottom: 20rpx;" capture-bind:tap="open" data-item="{{item}}" data-index="{{index}}" />
-  </me-waterfall-item>
-</me-waterfall>

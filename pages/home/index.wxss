@@ -1,132 +1,215 @@
-Page {
-  --td-tab-border-color: transparent;
-  --td-tab-track-width: 24px;
-  --td-tab-nav-bg-color: transparent;
-  --td-grid-bg-color: transparent;
-  overflow-x: hidden;
-  overflow-y: auto;
+/* pages/home/index.wxss */
+page {
+  background-color: #f5f2ee;
+  min-height: 100vh;
 }
 
-.container {
-  background: linear-gradient(180deg, #0B0B15 0%, #151C2E 100%);
-  height: auto;
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f5f2ee 0%, #fbf2e9ff 100%);
 }
 
-.top {
+/* 主要内容区域 */
+.main-content {
+  padding: 120rpx 32rpx 60rpx;
+}
+
+/* 欢迎区域 */
+.welcome-section {
+  margin-bottom: 40rpx;
+  padding: 20rpx 0;
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.welcome-title {
+  font-size: 52rpx;
+  font-weight: 600;
+  color: #2d1810;
+  line-height: 1.3;
+  margin-bottom: 20rpx;
+  letter-spacing: -0.5rpx;
+}
+
+.welcome-subtitle {
+  font-size: 30rpx;
+  color: #8b6f5c;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0 20rpx;
+}
+
+/* 卡片容器 */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40rpx;
+}
+
+/* 功能卡片 */
+.feature-card {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 40rpx;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 24rpx;
-  margin: 6rpx 0 30rpx 0;
-  box-sizing: border-box;
-  gap: 16rpx;
+  justify-content: space-between;
+  box-shadow: 0 8rpx 32rpx rgba(45, 24, 16, 0.08);
+  border: 1rpx solid rgba(139, 111, 92, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 280rpx;
 }
 
-.top .top-text {
-  font-weight: 400;
-  font-size: 24rpx;
-  line-height: 0;
-  color: #FFFFFF;
-  opacity: 0.5;
-}
-
-.top .icon {
-  width: 28rpx;
-  height: 22rpx;
-  animation-name: run;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-}
-
-.bottom {
-  width: 100%;
-  height: 60%;
+.feature-card::before {
+  content: '';
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  box-sizing: border-box;
-  background-color: rgba(51, 58, 82, 0.6);
-  border-radius: 14px 14px 0px 0px;
-  overflow: hidden;
-  padding-bottom: 48rpx;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
 }
 
-.btn {
-  margin: 24px 10px;
+.feature-card:active {
+  transform: scale(1.02);
+  box-shadow: 0 12rpx 40rpx rgba(45, 24, 16, 0.12);
 }
 
-.textarea-example {
-  padding: 10px;
+/* 卡片内容区域 */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 200rpx;
+  padding-right: 32rpx;
 }
 
-.text-prompt {
-  height: 464rpx;
+.card-header {
+  margin-bottom: 40rpx;
 }
 
-.image-prompt {
-  height: 280rpx;
+.card-title {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #2d1810;
+  margin-bottom: 16rpx;
+  line-height: 1.3;
+  letter-spacing: -0.3rpx;
 }
 
-.custom-tabs {
-  box-sizing: border-box;
-  overflow: hidden;
+.card-subtitle {
+  font-size: 28rpx;
+  color: #8b6f5c;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0rpx;
+}
+
+/* 卡片按钮 */
+.card-button {
+  align-self: flex-start;
+  padding: 20rpx 36rpx;
+  background: #d4b5a0;
+  color: #ffffff;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 500;
   border: none;
+  box-shadow: 0 4rpx 16rpx rgba(212, 181, 160, 0.4);
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: center;
+  margin-left: -10rpx;
 }
 
-.t-tabs__track--top,
-.t-tabs__track--bottom {
-  left: -2px !important;
-  bottom: 4px !important;
+.card-button:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(212, 181, 160, 0.5);
 }
 
-.t-upload__wrapper {
-  width: 100% !important;
-  margin-bottom: 24rpx;
-  height: 200rpx !important;
-  background: #1B2239;
-  border: 0.4px solid #4B4B4D;
-  border-radius: 13px;
-  box-sizing: border-box;
+/* 卡片图片 */
+.card-image {
+  width: 240rpx;
+  height: 100%;
+  border-radius: 20rpx;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f5f3f0;
+  position: relative;
 }
 
-.image-to-image {
+.card-image image {
   width: 100%;
   height: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 10rpx;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.image-icon {
-  width: 60rpx;
-  height: 60rpx;
+.feature-card:active .card-image image {
+  transform: scale(1.05);
 }
 
-.image-tip {
-  font-size: 30rpx;
-  color: #9E9E9E;
-  letter-spacing: 2rpx;
+/* 不同卡片的主题色彩 */
+.wedding-card {
+  background: linear-gradient(135deg, #fdf2f2 0%, #ffffff 100%);
 }
 
-@keyframes run {
-  0% {
-    opacity: 0.3;
+.wedding-card .card-button {
+  background: #dc2626;
+  box-shadow: 0 4rpx 16rpx rgba(220, 38, 38, 0.4);
+}
+
+.photo-card {
+  background: linear-gradient(135deg, #fef7ed 0%, #ffffff 100%);
+}
+
+.photo-card .card-button {
+  background: #ea580c;
+  box-shadow: 0 4rpx 16rpx rgba(234, 88, 12, 0.4);
+}
+
+.sunset-card {
+  background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+}
+
+.sunset-card .card-button {
+  background: #f97316;
+  box-shadow: 0 4rpx 16rpx rgba(249, 115, 22, 0.4);
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 375px) {
+  .main-content {
+    padding: 100rpx 24rpx 50rpx;
   }
 
-  25% {
-    opacity: 1;
+  .welcome-title {
+    font-size: 48rpx;
   }
 
-  50% {
-    opacity: 0.3;
+  .welcome-subtitle {
+    font-size: 28rpx;
   }
 
-  75% {
-    opacity: 1;
+  .feature-card {
+    padding: 36rpx;
+    min-height: 260rpx;
   }
 
-  100% {
-    opacity: 0.3;
-    left: 100%;
+  .card-title {
+    font-size: 36rpx;
+  }
+
+  .card-subtitle {
+    font-size: 26rpx;
   }
 }

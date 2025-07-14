@@ -1,0 +1,100 @@
+<view class="index-container" style="background: {{currentBgColor}};">
+  <!-- 动态渐变背景 -->
+  <view class="dynamic-overlay"></view>
+
+  <!-- 额外的动态光效层 -->
+  <view class="light-effect-layer"></view>
+
+  <!-- 增强的浮动装饰元素 -->
+  <view class="floating-elements">
+    <view class="floating-circle circle-1"></view>
+    <view class="floating-circle circle-3"></view>
+    <view class="floating-circle circle-4"></view>
+    <view class="floating-dot dot-1"></view>
+    <view class="floating-dot dot-2"></view>
+    <view class="floating-dot dot-3"></view>
+    <view class="floating-dot dot-4"></view>
+    <view class="floating-dot dot-5"></view>
+    <view class="floating-dot dot-6"></view>
+    <view class="floating-star star-1">✦</view>
+    <view class="floating-star star-2">✧</view>
+    <view class="floating-star star-3">✦</view>
+  </view>
+
+  <!-- 状态栏占位 -->
+  <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 主内容区域 -->
+  <view class="main-content">
+    <!-- 标题区域 -->
+    <view class="title-section">
+      <view class="main-title">晚霞预测</view>
+      <view class="subtitle">探索天空中最美的色彩</view>
+    </view>
+
+    <!-- 晚霞动画区域 -->
+    <view class="sunset-animation-container slide-in-center">
+      <view class="animation-wrapper">
+        <!-- 太阳 -->
+        <view class="sun" style="transform: translateX({{sunPosition.x}}px) translateY({{sunPosition.y}}px); opacity: {{sunOpacity}};"></view>
+
+        <!-- 云层 -->
+        <view class="cloud-layer cloud-1" style="opacity: {{cloudOpacity.cloud1}}; transform: translateX({{cloudPosition.x1}}px); background: {{cloudColors.cloud1}};"></view>
+        <view class="cloud-layer cloud-2" style="opacity: {{cloudOpacity.cloud2}}; transform: translateX({{cloudPosition.x2}}px); background: {{cloudColors.cloud2}};"></view>
+        <view class="cloud-layer cloud-3" style="opacity: {{cloudOpacity.cloud3}}; transform: translateX({{cloudPosition.x3}}px); background: {{cloudColors.cloud3}};"></view>
+        <view class="cloud-layer cloud-4" style="opacity: {{cloudOpacity.cloud4}}; transform: translateX({{cloudPosition.x4}}px); background: {{cloudColors.cloud4}};"></view>
+        <view class="cloud-layer cloud-5" style="opacity: {{cloudOpacity.cloud5}}; transform: translateX({{cloudPosition.x5}}px); background: {{cloudColors.cloud5}};"></view>
+
+        <!-- 光芒效果 -->
+        <view class="sun-rays" style="opacity: {{raysOpacity}}; transform: rotate({{raysRotation}}deg);"></view>
+      </view>
+    </view>
+
+    <!-- 晚霞级别控制器 -->
+    <view class="sunset-controller-container slide-in-bottom">
+      <!-- 中央指示器 - 蓝色三角 -->
+      <view class="center-indicator">
+        <view class="indicator-triangle">▼</view>
+      </view>
+      
+      <!-- 滑动条容器 -->
+      <view class="slider-container" bindtouchstart="onSliderTouchStart" bindtouchmove="onSliderTouchMove" bindtouchend="onSliderTouchEnd">
+        <!-- 可滑动的级别轨道 -->
+        <view class="slider-track-scroll" style="transform: translateX({{translateX-24}}px); transition: {{isAnimating ? 'transform ' + animationDuration + 'ms ease-out' : 'none'}};">
+          <!-- 三组循环的刻度，实现无限滚动 -->
+          <view class="track-group" wx:for="{{[0, 1, 2]}}" wx:key="*this" wx:for-item="groupIndex">
+            <view class="track-item" wx:for="{{detailedScale}}" wx:key="scaleIndex" data-index="{{item.levelIndex}}" bindtap="onLevelTap" style="width: {{itemWidth}}px;">
+              <view class="item-mark {{item.type}} {{Math.floor(item.levelIndex) === centerIndex && item.type === 'major' ? 'active' : ''}}"></view>
+              <view class="item-label {{item.type}} {{Math.floor(item.levelIndex) === centerIndex && item.type === 'major' ? 'active' : ''}}">{{item.label}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 内容卡片区域 -->
+    <view class="content-card-container slide-in-bottom">
+      <!-- 搜索输入 -->
+      <view class="search-section">
+        <view class="search-input-wrapper">
+          <input class="search-input" type="text" placeholder-style="color:#fff;" placeholder="输入城市名称，探索晚霞之美" placeholder-class="input-placeholder" value="{{searchCity}}" bindinput="onCityInput" confirm-type="search" bindconfirm="onSearch" />
+        </view>
+      </view>
+
+      <!-- 预测按钮 -->
+      <view class="predict-button" bindtap="onSearch">
+        <view class="predict-btn-content">
+          <view class="predict-btn-text">开始预测</view>
+        </view>
+      </view>
+
+    </view>
+
+    <!-- 底部装饰 -->
+    <view class="bottom-decoration slide-in-fade">
+      <view class="decoration-line"></view>
+      <view class="decoration-center">✦</view>
+      <view class="decoration-line"></view>
+    </view>
+  </view>
+</view>

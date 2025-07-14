@@ -1,6 +1,9 @@
 {
-  "usingComponents": {
-    "me-waterfall": "me-waterfall/waterfall/index",
-    "me-waterfall-item": "me-waterfall/waterfall-item/index"
-  }
+  "navigationBarTitleText": "婚礼现场",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#f8f9fa",
+  "onReachBottomDistance": 200,
+  "backgroundTextStyle": "light",
+  "renderer": "webview"
 }

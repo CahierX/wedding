@@ -1,0 +1,18 @@
+<view class="tab-bar" style="background-color: {{backgroundColor}}">
+  <view 
+    wx:for="{{list}}" 
+    wx:key="index" 
+    class="tab-bar-item {{selected === index ? 'tab-bar-item-active' : ''}}"
+    data-path="{{item.pagePath}}" 
+    data-index="{{index}}" 
+    bindtap="switchTab"
+  >
+    <view class="tab-icon">
+      <text wx:if="{{index === 0}}" class="icon-text {{selected === index ? 'icon-active' : ''}}">🌅</text>
+      <text wx:if="{{index === 1}}" class="icon-text {{selected === index ? 'icon-active' : ''}}">💌</text>
+    </view>
+    <text class="tab-text" style="color: {{selected === index ? selectedColor : color}}">
+      {{item.text}}
+    </text>
+  </view>
+</view>

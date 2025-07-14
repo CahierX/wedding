@@ -1,0 +1,10 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "晚霞预测",
+  "navigationBarBackgroundColor": "#37474f",
+  "navigationBarTextStyle": "white",
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#ffffff",
+  "enablePullDownRefresh": false,
+  "renderer": "webview"
+}

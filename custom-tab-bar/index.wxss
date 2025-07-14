@@ -1,0 +1,117 @@
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(140rpx + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30rpx);
+  -webkit-backdrop-filter: blur(30rpx);
+  border-top: 2rpx solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  z-index: 1000;
+  box-shadow: 0 -8rpx 32rpx rgba(0, 0, 0, 0.15);
+}
+
+.tab-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  border-radius: 32rpx 32rpx 0 0;
+  z-index: -1;
+}
+
+.tab-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 0;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-bar-item:active {
+  transform: scale(0.95);
+}
+
+.tab-bar-item-active {
+  transform: translateY(-4rpx);
+}
+
+.tab-bar-item-active::before {
+  content: '';
+  position: absolute;
+  top: 12rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.2) 0%,
+    rgba(255, 107, 53, 0.1) 100%
+  );
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.7;
+  }
+}
+
+.tab-icon {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8rpx;
+  position: relative;
+}
+
+.icon-text {
+  font-size: 40rpx;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2rpx 8rpx rgba(0, 0, 0, 0.1));
+}
+
+.icon-active {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4rpx 12rpx rgba(255, 107, 53, 0.3));
+}
+
+.tab-text {
+  font-size: 20rpx;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.1);
+  letter-spacing: 1rpx;
+}
+
+.tab-bar-item-active .tab-text {
+  font-weight: 600;
+  text-shadow: 0 2rpx 8rpx rgba(255, 107, 53, 0.3);
+}

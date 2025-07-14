@@ -1,5 +1,39 @@
-<me-waterfall custom-class="water-fall">
-  <me-waterfall-item custom-class="water-fall-item" wx:for="{{list}}" wx:key="index">
-    <image class="image" src="{{item}}" mode="aspectFill" style="margin-bottom: 20rpx;" capture-bind:tap="open" data-item="{{item}}" data-index="{{index}}" />
-  </me-waterfall-item>
-</me-waterfall>
+<view class="photo-page">
+  <!-- 图片网格容器 -->
+  <scroll-view 
+    class="scroll-container" 
+    scroll-y="{{true}}" 
+    enhanced="{{true}}"
+    bounces="{{true}}"
+    enable-passive="{{true}}"
+    bindscrolltolower="onReachBottom"
+  >
+    <view class="photo-grid">
+      <view 
+        class="photo-item" 
+        wx:for="{{list}}" 
+        wx:key="index"
+      >
+        <view class="photo-wrapper">
+          <image 
+            class="photo-image" 
+            src="{{item}}" 
+            mode="aspectFill"
+            lazy-load="{{true}}"
+            bindtap="previewImage"
+            data-url="{{item}}"
+          />
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多指示器 -->
+    <view class="loading-more" wx:if="{{isLoadingMore}}">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">加载中...</text>
+    </view>
+
+    <!-- 底部间距 -->
+    <view class="bottom-space"></view>
+  </scroll-view>
+</view>

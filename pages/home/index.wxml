@@ -1,25 +1,59 @@
-<view class="container">
-  <view class="top">
-    <image class="icon" src="../../assets/selectLeft.svg" />
-    <text class="top-text">
-      左右滑动或点击效果图查看更多美照~
-    </text>
-    <image class="icon" src="../../assets/selectRight.svg" />
-  </view>
-  <t-swiper t-class="swiper" height="240" current="{{current}}" autoplay="{{true}}" duration="{{500}}" list="{{fn.getImageList(list)}}" navigation="{{ { type: 'dots-bar',showControls:false } }}" image-props="{{imageProps}}" bind:click="openAiExample" bind:change="changeExample" />
-  <code-line />
-  <console-line />
-  <time-line />
+<!--pages/home/index.wxml-->
+<view class="home-container">
+  <!-- 主要内容区域 -->
+  <view class="main-content">
+    <!-- 欢迎区域 -->
+    <view class="welcome-section">
+      <view class="welcome-title">我们的美好时光</view>
+      <view class="welcome-subtitle">爱情是最美的风景，期待与您分享我们的幸福时刻</view>
+    </view>
 
+    <!-- 功能模块卡片 -->
+    <view class="cards-container">
+      <!-- 婚礼邀请函模块 -->
+      <view class="feature-card wedding-card" 
+            bindtap="navigateToWedding">
+        <view class="card-content">
+          <view class="card-header">
+            <view class="card-title">婚礼邀请函</view>
+            <view class="card-subtitle">诚挚邀请您参加我们的婚礼，见证我们人生中最重要的时刻</view>
+          </view>
+          <view class="card-button">婚礼邀请函</view>
+        </view>
+        <view class="card-image">
+          <image src="https://i0.wp.com/wx4.sinaimg.cn/large/0065XdVMgy1i3dgjr9tsvj310c0x2b29.jpg" mode="aspectFill" />
+        </view>
+      </view>
+
+      <!-- 相册模块 -->
+      <view class="feature-card photo-card" 
+            bindtap="navigateToPhoto">
+        <view class="card-content">
+          <view class="card-header">
+            <view class="card-title">爱的相册</view>
+            <view class="card-subtitle">记录我们婚礼现场的美好瞬间,每一张照片都是珍贵的会议</view>
+          </view>
+          <view class="card-button">婚礼现场相册</view>
+        </view>
+        <view class="card-image">
+          <image src="https://i1.wp.com/wx4.sinaimg.cn/large/0065XdVMgy1i3dgl8l9wvj312c0x27wh.jpg" mode="aspectFill" />
+        </view>
+      </view>
+
+      <!-- 晚霞预测模块 -->
+      <view class="feature-card sunset-card" 
+            bindtap="navigateToSunset">
+        <view class="card-content">
+          <view class="card-header">
+            <view class="card-title">晚霞预测</view>
+            <view class="card-subtitle">预测今日晚霞，与心爱的人一起欣赏天空的浪漫色彩</view>
+          </view>
+          <view class="card-button">今日晚霞预测</view>
+        </view>
+        <view class="card-image">
+          <image src="https://i1.wp.com/wx4.sinaimg.cn/large/0065XdVMgy1i3dgp5kcp0j312c0x2b29.jpg" mode="aspectFill" />
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
-<wxs module="fn">
-  var getImageList = function (list) {
-    var imageList = []
-    for (var i = 0; i < list.length; i++) {
-      imageList.push(list[i].image)
-    }
-    console.log(imageList)
-    return imageList
-  }
-  module.exports.getImageList = getImageList
-</wxs>
